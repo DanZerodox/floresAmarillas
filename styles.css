@@ -1,0 +1,138 @@
+/* Estilo básico del cuerpo */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #ffafbd, #ffc3a0);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Contenedor del álbum */
+.album-container {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.photo-frame {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    perspective: 1000px; /* Perspectiva para la rotación */
+}
+
+/* Animación de explosión de flores */
+#flower-explosion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+    display: none; /* Las flores aparecerán durante la explosión */
+}
+
+.flower {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('flower.png');
+    background-size: cover;
+    animation: explode 1s forwards ease-out;
+}
+
+/* Rotación tipo hoja de papel y explosión */
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    animation: rotateAndExplode 10s ease-in-out infinite;
+}
+
+/* Animación de rotación tipo hoja de papel y explosión */
+@keyframes rotateAndExplode {
+    0%, 75% {
+        transform: rotateY(0deg); /* Posición normal */
+    }
+    80% {
+        transform: rotateY(180deg) rotateX(15deg) scale(1.1); /* Gira como una hoja */
+    }
+    90% {
+        transform: rotateY(360deg) rotateX(-15deg) scale(0.8); /* Gira hacia atrás y se hace más pequeña */
+    }
+    100% {
+        transform: rotateY(360deg) scale(0); /* Desaparece y se hace pequeña antes de la explosión */
+    }
+}
+
+/* Explosión de flores */
+@keyframes explode {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2) translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+
+/* Frases de amor */
+.caption {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    font-size: 1.5rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    animation: fadeText 10s ease-in-out infinite;
+}
+
+@keyframes fadeText {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Girasoles de fondo */
+#sunflower-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.sunflower {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('sunflower.png');
+    background-size: cover;
+    animation: moveSunflower 15s linear infinite;
+}
+
+@keyframes moveSunflower {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100vh) rotate(360deg); }
+}

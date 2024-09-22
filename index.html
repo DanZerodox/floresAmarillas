@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21 DE SEPTIEMBRE</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+        }
+        .note {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .note a {
+            color: #d9534f;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .note a:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="page1" class="container">
+        <img src="flores.png" alt="Ramo de flores amarillas">
+        <div class="note">
+            <p>Lamento no poder darles este ramo de flores como se lo merecen, <a href="#" onclick="changeContent()">da click aquí</a>.</p>
+        </div>
+    </div>
+        <div  id="page2" class="album-container hidden">
+            <div class="photo-frame">
+                <img id="photo" src="photo1.jpg" alt="Foto de la familia">
+                <div id="flower-explosion"></div>
+                <div class="caption" id="caption">Las amo a ambas con todo mi corazón</div>
+            </div>
+        </div>
+
+    <!-- Contenedor de los girasoles -->
+    <div id="sunflower-background"></div>
+    </div>
+    <audio id="background-music" src="sound/amor.mp3"></audio>
+    <script src="script.js"></script>
+    <script>
+       function changeContent() {
+            document.getElementById('page1').classList.add('hidden'); // Oculta la primera "página"
+            document.getElementById('page2').classList.remove('hidden'); // Muestra la segunda "página"
+            const audio = document.getElementById('background-music');
+            audio.play();
+        }
+    </script>
+
+</body>
+</html>
